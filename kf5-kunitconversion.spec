@@ -17,7 +17,7 @@ BuildRequires:	Qt5Test-devel
 BuildRequires:	Qt5Xml-devel
 BuildRequires:	cmake >= 2.8.12
 BuildRequires:	gettext-devel
-BuildRequires:	kf5-extra-cmake-modules >= 1.0.0
+BuildRequires:	kf5-extra-cmake-modules >= %{version}
 BuildRequires:	kf5-ki18n-devel >= %{version}
 BuildRequires:	ninja
 BuildRequires:	rpmbuild(macros) >= 1.164
