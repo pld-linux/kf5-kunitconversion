@@ -1,15 +1,15 @@
-%define		kdeframever	5.84
+%define		kdeframever	5.85
 %define		qtver		5.9.0
 %define		kfname		kunitconversion
 #
 Summary:	Converting physical units
 Name:		kf5-%{kfname}
-Version:	5.84.0
+Version:	5.85.0
 Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
 Source0:	http://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	f802250927bac7a1ba0ccd9e39f22ebb
+# Source0-md5:	298c9df17377b26ccd76d34f54ffad6c
 URL:		http://www.kde.org/
 BuildRequires:	Qt5Core-devel
 BuildRequires:	Qt5Network-devel
@@ -92,6 +92,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc README.md
 %ghost %{_libdir}/libKF5UnitConversion.so.5
 %attr(755,root,root) %{_libdir}/libKF5UnitConversion.so.*.*.*
+%{_datadir}/qlogging-categories5/kunitconversion.categories
 
 %files devel
 %defattr(644,root,root,755)
