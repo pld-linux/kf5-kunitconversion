@@ -1,23 +1,23 @@
 #
 # Conditional build:
 %bcond_with	tests		# build with tests
-%define		kdeframever	5.249.0
+%define		kdeframever	5.114
 %define		qtver		5.15.2
 %define		kfname		kunitconversion
 #
 Summary:	Converting physical units
 Name:		kf5-%{kfname}
-Version:	5.249.0
-Release:	0.1
+Version:	5.114.0
+Release:	1
 License:	LGPL v2.1+
 Group:		X11/Libraries
-Source0:	https://download.kde.org/unstable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
-# Source0-md5:	43435d7da886511454e3568b8ab7450c
+Source0:	https://download.kde.org/stable/frameworks/%{kdeframever}/%{kfname}-%{version}.tar.xz
+# Source0-md5:	f812b8bb81d47b6204be48fdc56757e8
 URL:		http://www.kde.org/
-BuildRequires:	Qt6Core-devel
-BuildRequires:	Qt6Network-devel
-BuildRequires:	Qt6Test-devel
-BuildRequires:	Qt6Xml-devel
+BuildRequires:	Qt5Core-devel
+BuildRequires:	Qt5Network-devel
+BuildRequires:	Qt5Test-devel
+BuildRequires:	Qt5Xml-devel
 BuildRequires:	cmake >= 3.16
 BuildRequires:	gettext-devel
 BuildRequires:	kf5-extra-cmake-modules >= %{version}
@@ -29,7 +29,7 @@ BuildRequires:	xz
 Requires:	kf5-dirs
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
-%define		qt6dir		%{_libdir}/qt6
+%define		qt5dir		%{_libdir}/qt5
 
 %description
 KUnitConversion provides functions to convert values in different
@@ -87,7 +87,7 @@ Pliki nagłówkowe dla programistów używających %{kfname}.
 rm -rf $RPM_BUILD_ROOT
 %ninja_install -C build
 
-%find_lang %{kfname}6
+%find_lang %{kfname}5
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -95,15 +95,16 @@ rm -rf $RPM_BUILD_ROOT
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
 
-%files -f %{kfname}6.lang
+%files -f %{kfname}5.lang
 %defattr(644,root,root,755)
 %doc README.md
-%ghost %{_libdir}/libKF6UnitConversion.so.6
-%attr(755,root,root) %{_libdir}/libKF6UnitConversion.so.*.*.*
-%{_datadir}/qlogging-categories6/kunitconversion.categories
+%ghost %{_libdir}/libKF5UnitConversion.so.5
+%attr(755,root,root) %{_libdir}/libKF5UnitConversion.so.*.*.*
+%{_datadir}/qlogging-categories5/kunitconversion.categories
 
 %files devel
 %defattr(644,root,root,755)
-%{_includedir}/KF6/KUnitConversion
-%{_libdir}/cmake/KF6UnitConversion
-%{_libdir}/libKF6UnitConversion.so
+%{_includedir}/KF5/KUnitConversion
+%{_libdir}/cmake/KF5UnitConversion
+%{_libdir}/libKF5UnitConversion.so
+%{qt5dir}/mkspecs/modules/qt_KUnitConversion.pri
